@@ -61,7 +61,7 @@ function https_Nontion_DataBase(Notionkey,database_id)
     //notion过滤参数
     var postdata={
         "filter": {
-            "and":[{"property": "Status","checkbox": {"equals": true}},{"property": "Finished","checkbox": {"equals": false}}]
+            "and":[{"property": "Status","rich_text":{"contains":"执行中"}},{"property":"Finished","checkbox":{"equals": false}}]
         }
       };
     var reqdata = JSON.stringify(postdata);
@@ -119,7 +119,7 @@ function parseProject(datas)
     var result=[];
     for (var i=0;i<datas['results'].length;i++)
     {
-        result.push(datas['results'][i]['properties']['项目名称']['title'][0]['text']['content']);
+        result.push(datas['results'][i]['properties']['Name']['title'][0]['text']['content']);
     }
     return result;
 }
