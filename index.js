@@ -61,7 +61,7 @@ function https_Nontion_DataBase(Notionkey,database_id)
     //notion过滤参数
     var postdata={
         "filter": {
-            "and":[{"property": "isToday","checkbox": {"equals": true}},{"property": "已完成","checkbox": {"equals": false}}]
+            "and":[{"property": "Status","checkbox": {"equals": true}},{"property": "Finished","checkbox": {"equals": false}}]
         }
       };
     var reqdata = JSON.stringify(postdata);
