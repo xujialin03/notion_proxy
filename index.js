@@ -3,8 +3,9 @@
 var express=require('express');
 const https = require('https');
 const port=process.env.PORT || 3000;
+process.env.TZ = 'Asia/Shanghai';
 var app=express();
-process.env.TZ = 'Asia/Shanghai'
+
 const project_database_id='84b35e6f-6d2e-49d3-a173-92439a4621b5';
 const todo_database_id="52967d09-6868-4438-ac83-070fb8f3b288";
 const learn_database_id="58fe3237-c47c-4763-9770-58797c178e33";
