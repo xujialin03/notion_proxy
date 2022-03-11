@@ -1,19 +1,21 @@
 const { json } = require('express/lib/response');
 const https = require('https');
-var postdata={
-    "filter": {
-      "property": "isToday",
-      "checkbox": {
-        "equals": true
-      }
-    }
-  };
+process.env.TZ = 'Asia/Shanghai';
+// var postdata={
+//     "filter": {
+//       "property": "isToday",
+//       "checkbox": {
+//         "equals": true
+//       }
+//     }
+//   };
+var postdata={};
 var reqdata = JSON.stringify(postdata);
 var options=
 {
     hostname: 'api.notion.com',
     port: '443',
-    path: '/v1/databases/84b35e6f-6d2e-49d3-a173-92439a4621b5/query',
+    path: '/v1/databases/5a8306b5-ab26-4547-a4fd-04fcf9a8c384/query',
     method: 'POST',
     headers: {
         'Authorization':'Bearer '+'secret_151Mw9NJrcCkraFR7ytPZJcKdHInwrSCcMcxrt7z19f',
@@ -37,7 +39,13 @@ req.on('response', function (response)
             const jsondata = JSON.parse(datas)
             for (var i=0;i<jsondata['results'].length;i++)
             {
-                console.log(jsondata['results'][i]['properties']['项目名称']['title'][0]['text']['content']);
+                // console.log(jsondata['results'][i]['properties']['项目名称']['title'][0]['text']['content']);
+                console.log(jsondata['results'][i]['properties']['nowdate']['formula']['number']);
+                console.log(jsondata['results'][i]['properties']['nowhour']['formula']['number']);
+                console.log(jsondata['results'][i]['properties']['nowmin']['formula']['number']);
+                console.log(jsondata['results'][i]['properties']['Status']['formula']['string']);
+                console.log(jsondata['results'][i]['properties']['BetweenStart']['formula']['number']);
+                console.log(jsondata['results'][i]['properties']['BetweenEnd']['formula']['number']);
             }
             
         } 

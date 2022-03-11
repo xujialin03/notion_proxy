@@ -134,7 +134,16 @@ function parseTodo(datas)
     var result=[];
     for (var i=0;i<datas['results'].length;i++)
     {
-        result.push(datas['results'][i]['properties']['Name']['title'][0]['text']['content']);
+        try
+        {
+            result.push(datas['results'][i]['properties']['Name']['title'][0]['text']['content']);
+        }
+        catch (e)
+        {
+            console.log("json解析错误");
+            console.log(datas['results'][i]);
+        }
+        
     }
     return result;
 }
